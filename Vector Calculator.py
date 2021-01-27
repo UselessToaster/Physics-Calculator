@@ -19,24 +19,27 @@ def velocity():
 #compare slopes 
 def compare_slopes():
     n = 0
-    i = 0
     distance = []
     time = []
     user = int(input("How many inputs? "))
+    print("Enter the distance followed by time like so: \nx \ny")
+    #collects data
     for _ in range(user):
         n += 1
-        get_distance = float(input(f"Enter meter input {n}: "))
+        print(f"Input {n}:")
+        get_distance = float(input())
         distance.append(get_distance)
-    for _ in range(user):
-        i += 1
-        get_time = float(input(f"Enter time input {i}: "))
+        get_time = float(input())
         time.append(get_time)
+    #runs calculations
     slopes = [float(m) / float(s) for m,s in zip(distance, time)]
     rounded_slopes = [round(elem, 2) for elem in slopes]
-    print("Distance inputs:", distance)
-    print("Time inputs:", time)
-    print("Slopes in order of entry: ", rounded_slopes)
+    #prints results
+    print("Distance inputs:{}m".format(distance))
+    print("Time inputs:    {}s".format(time))
+    print("Slopes:         {}m/s".format(rounded_slopes))
 
+#acceleration function
 def acceleration():
     user = input("Do you have your initial and final velocity? (Y/N) " ).upper().strip()
     print()
@@ -53,40 +56,35 @@ def acceleration():
     acceleration = (vf - vi)/time
     print("Your acceleration is: {:.2f}m/s^2".format(acceleration))
 
+#compare accelerations
 def comparing_accel():
     n = 0
-    i = 0
-    x = 0
     vi = []
     vf = []
     time = []
     user = int(input("How many inputs? "))
+    print("Enter your date like so: \nvi \nvf \nt")
+    #collects data
     for _ in range(user):
         n += 1
-        get_vi = float(input(f"Enter initial velocity {n}: "))
+        print(f"Input{n}")
+        get_vi = float(input())
         vi.append(get_vi)
-        print("------")
-    for _ in range(user):
-        x += 1
-        get_vf = float(input(f"Enter final velocity {x}: "))
+        get_vf = float(input())
         vf.append(get_vf)
-        print("------")
-    for _ in range(user):
-        i += 1
-        get_time = float(input(f"Enter time input {i}: "))
+        get_time = float(input())
         time.append(get_time)
-        print("------")
+        print()
+    #calculates data
     avgV = [float(f) - float(i) for f,i in zip(vf, vi)]
-    accel = [float(a) / float(s) for a,s in zip(avgV, time)]
+    accel = [float(v) / float(s) for v,s in zip(avgV, time)]
     rounded_accel = [round(a, 2) for a in accel]
+    #prints results
     print("Initial Velocity: {}m/s".format(vi))
     print("Final Velocity:   {}m/s".format(vf))
     print("Time:             {}s".format(time))
     print("Acceleration:     {}m/s^2".format(rounded_accel))
     
-    
-    
-
 
 #lists possible actions and gets user input
 print("""FUNCTIONS:
@@ -113,4 +111,3 @@ elif user == "acceleration":
 elif user == "compare accel":
     print()
     comparing_accel()
-
