@@ -15,6 +15,7 @@ def velocity():
     displacement = xf - xi
     velocity = displacement/time
     print("{:,.3f}".format(velocity))
+    return velocity
 
 #compare slopes 
 def compare_slopes():
